@@ -1,0 +1,260 @@
+{
+  "name": "University_Graduation_Ceremony_form",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "فرم ثبت نام",
+        "formDescription": "جهت حضور در جشن فارغ التحصیلی دانشگاه‌های کشور این فرم را به دفت پر نمایید",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "نام",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "تخلص ",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "رشته تحصیلی ",
+              "placeholder": "کمپیوتر ساینس",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "دانشگاه ",
+              "placeholder": "دانشگاه کابل",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "جنسیت",
+              "fieldType": "checkbox",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "مرد"
+                  },
+                  {
+                    "option": "زن"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "سال فراغت",
+              "fieldType": "number",
+              "placeholder": "1405",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "فیصدی نمرات ",
+              "fieldType": "number",
+              "placeholder": "95.5"
+            },
+            {
+              "fieldLabel": "ایمیل",
+              "fieldType": "email",
+              "placeholder": "abc@gmail.com",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -224,
+        16
+      ],
+      "id": "d6f8fdd7-5fd1-4510-bae7-f9c60b97a8c6",
+      "name": "On form submission",
+      "webhookId": "a8004f82-426b-4839-8308-77170e31efa0"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1iVK5me54V_C9EyTJDboLszOxyOaJfx0gVcUioVgPqQY",
+          "mode": "list",
+          "cachedResultName": "Gruduation_List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iVK5me54V_C9EyTJDboLszOxyOaJfx0gVcUioVgPqQY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iVK5me54V_C9EyTJDboLszOxyOaJfx0gVcUioVgPqQY/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ایمیل": "={{ $json['ایمیل'] }}",
+            "نام": "={{ $json['نام'] }}",
+            "تخلص ": "={{ $json['تخلص '] }}",
+            "رشته تحصیلی ": "={{ $json['رشته تحصیلی '] }}",
+            "دانشگاه ": "={{ $json['دانشگاه '] }}",
+            "جنسیت": "={{ $json['جنسیت'] }}",
+            "سال فراغت": "={{ $json['سال فراغت'] }}",
+            "فیصدی نمرات ": "={{ $json['فیصدی نمرات '] }}"
+          },
+          "matchingColumns": [
+            "ایمیل"
+          ],
+          "schema": [
+            {
+              "id": "نام",
+              "displayName": "نام",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "تخلص ",
+              "displayName": "تخلص ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "رشته تحصیلی ",
+              "displayName": "رشته تحصیلی ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "دانشگاه ",
+              "displayName": "دانشگاه ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "جنسیت",
+              "displayName": "جنسیت",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "سال فراغت",
+              "displayName": "سال فراغت",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "فیصدی نمرات ",
+              "displayName": "فیصدی نمرات ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ایمیل",
+              "displayName": "ایمیل",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -16,
+        112
+      ],
+      "id": "1e8e2a0a-16b5-46e2-86b5-47698b644334",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZqHTXeGRUcguDKa7",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json['ایمیل'] }}",
+        "subject": "تاییدیه ثبت نام در جشن فارغ التحصیلی",
+        "message": "=Dear {{ $json['نام'] }} {{ $json['تخلص '] }}\n\nYou have successfully regitered to our ceremony\n\nThanks.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -16,
+        -80
+      ],
+      "id": "5e1e9bc9-43c4-4533-81e1-85923bc1d5e8",
+      "name": "Send a message",
+      "webhookId": "5b498585-dd6f-41a6-84bf-b9b2c2fcce05",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "fZBToZVcYayCP241",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "29298052-54c9-4953-96c3-674c84b22edd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bcdb15ef08ea53913b97983d05b8999b3799e508761b41e5475154b7f7280645"
+  },
+  "id": "Dlb5KZGP4HikNqWE",
+  "tags": []
+}
